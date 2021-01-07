@@ -44,7 +44,8 @@ RUN cmake -Wno-dev \
   -D Boost_NO_BOOST_CMAKE=ON \
   ..
 RUN make -j $(proc) && make install
+WORKDIR /
+# Set Python3 as default
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2
 RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 2
-WORKDIR /
 CMD /bin/bash
